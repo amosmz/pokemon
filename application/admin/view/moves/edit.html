@@ -1,0 +1,143 @@
+﻿<?php 
+  $topAttr = array('title'=>'编辑用户','icon'=>'fa-plus');
+  $topAttr['here'] = array(
+      '首页' => "{:url('Index/index')}",
+      '平台用户' => "{:url('index')}",
+      '编辑' => ''
+      );
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+	<meta content=always name=referrer>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="__PUBLIC__/favicon.png" type="image/png" />
+	<title>{:$topAttr['title']}</title>
+	<link href="__STATIC__/css/style.default.css" rel="stylesheet" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="__STATIC__/js/html5shiv.js"></script>
+	<script src="__STATIC__/js/respond.min.js"></script>
+	<![endif]-->
+
+	<style type="text/css">img {max-width: 100%;}</style>
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="status"> <i class="fa fa-spinner fa-spin"></i>
+		</div>
+	</div>
+
+	<section>
+		{include file="public/leftpanel" /}
+		<div class="mainpanel">
+			{include file="public/headerbar" /}
+			<div class="contentpanel">
+				<form class="form-horizontal form-bordered" action="" enctype="multipart/form-data" method="post">
+
+					<div class="panel panel-default">
+						
+						{include file="public/panel_heading" /}
+						
+						<div class="panel-body panel-body-nopadding">
+							<input type="hidden" name="id" value="{:$data['id']}" >
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">用户名</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="account" value="{:$data['account']}" readonly="readonly" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">昵称</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="name" value="{:$data['name']}" autocomplete="off"/>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">头像</label>
+								<div class="col-sm-6">
+
+									<input type="file" name="headimage" class="cch_file"  />
+									<button type="button" class="btn btn-primary" >上传图片</button>
+									<span style="padding-left:10px;">尺寸：100 x 100</span>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-6 col-sm-offset-3">
+									<button class="btn btn-primary">提交</button>
+									&nbsp;
+									<input type="reset" value="重置" class="btn btn-default"></div>
+							</div>
+						</div>
+					</div>
+
+				</form>
+
+				<form class="form-horizontal form-bordered" action="{:url('editpd')}" enctype="multipart/form-data" method="post">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						  <div class="panel-btns">
+						    <a href="" class="minimize">&minus;</a>
+						  </div>
+						  <h4 class="panel-title">修改密码</h4>
+						</div>
+						
+						<div class="panel-body panel-body-nopadding">
+							<input type="hidden" name="id" value="{:$data['id']}" >
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">密码</label>
+								<div class="col-sm-6">
+									<input type="password"  class="form-control" name="password" value="" autocomplete="off"/>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-6 col-sm-offset-3">
+									<button class="btn btn-primary">提交</button>
+									&nbsp;
+									<input type="reset" value="重置" class="btn btn-default"></div>
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+		<!-- mainpanel -->
+		{include file="public/rightpanel" /}
+	</section>
+
+	<script src="__STATIC__/js/jquery-1.11.1.min.js"></script>
+	<script src="__STATIC__/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="__STATIC__/js/bootstrap.min.js"></script>
+	<script src="__STATIC__/js/toggles.min.js"></script>
+	<script src="__STATIC__/js/jquery.cookies.js"></script>
+	<script src="__STATIC__/js/custom.js"></script>
+	<script src="__STATIC__/js/jquery.sparkline.min.js"></script>
+	<script src="__STATIC__/js/select2.min.js"></script>
+	<script src="__STATIC__/js/main.js"></script>
+	
+
+</body>
+</html>

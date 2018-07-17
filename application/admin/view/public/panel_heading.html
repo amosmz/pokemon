@@ -1,0 +1,17 @@
+<div class="panel-heading">
+  <div class="panel-btns">
+    <a href="" class="minimize">&minus;</a>
+  </div>
+  <h4 class="panel-title">{:$topAttr['title']}</h4>
+  <?php if (!empty($err)): ?>
+    <div class="error_div">
+      <?php if (!is_array($err)): ?>
+        <div>{:$err}</div>
+      <?php else: ?>
+        <?php foreach ($err as $k => $v): ?>
+          <div>{:$v}</div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+</div>

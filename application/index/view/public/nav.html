@@ -1,0 +1,32 @@
+<!-- start header -->
+<header class="main-header" style="background-image: url(__STATIC__/icon/4.jpeg)">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<!-- start logo -->
+			<!-- end logo -->
+		</div>
+	</div>
+</div>
+</header><!-- end header --><!-- start navigation -->
+<nav class="main-navigation">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="navbar-header">
+				<span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu">
+				<span class="sr-only">Toggle navigation</span>
+				<i class="fa fa-bars"></i>
+				</span>
+			</div>
+			<div class="collapse navbar-collapse" id="main-menu">
+				<ul class="menu">
+					<li <?php if(request()->action() == 'index'):?> class="nav-current" <?php endif;?> role="presentation"><a href="/">首页</a></li>
+					<li <?php if(request()->action() == 'download'):?> class="nav-current" <?php endif;?> role="presentation"><a href="/download">下载</a></li>
+					<li <?php if(request()->action() == 'about'):?> class="nav-current" <?php endif;?> role="presentation"><a href="/about">关于</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</nav><!-- end navigation --><!-- start site's main content area -->

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+  <meta content=always name=referrer>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <title>登录</title>
+  <link href="__STATIC__/css/style.default.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="__STATIC__/js/html5shiv.js"></script>
+  <script src="__STATIC__/js/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    .verifyDiv {width:100%;float:left;}
+    .verifyDiv input {width:60%;float:left;}
+    .verifyDiv img {width:39%;float:right;margin-top:15px;height: 40px;}
+  </style>
+</head>
+
+<body class="signin">
+
+  <section>
+
+    <div class="signinpanel">
+
+      <div class="row">
+
+        <div class="col-md-7">
+
+          <div class="signin-info">
+            <div class="logopanel">
+              <h1>
+                <span>[</span>
+                Pokemon
+                <span>]</span>
+              </h1>
+            </div>
+            <!-- logopanel -->
+
+            <div class="mb20"></div>
+
+            <h5> <strong>Welcome to Pokemon !</strong>
+            </h5>
+            <div class="mb20"></div>
+
+          </div>
+        </div>
+        <!-- col-sm-7 -->
+
+        <div class="col-md-5">
+
+          <form method="post" action="">
+            <h4 class="nomargin">用户登录</h4>
+            <p class="mt5 mb20">请输入用户名和密码.</p>
+
+            <input type="text" class="form-control uname"  name="account" />
+            <input type="password" class="form-control pword"   name="password" />
+           <!--  <p class="verifyDiv">
+              <input type="text" class="form-control" name="verify" placeholder="请输入验证码" />
+              <img id="verify_img" src="{:captcha_src()}" alt="verify_img" />
+            </p> -->
+            <input type="submit" class="btn btn-success btn-block" value="登录"></form>
+        </div>
+        <!-- col-sm-5 --> </div>
+      <!-- row -->
+
+      <div class="signup-footer">
+        <div class="pull-left">&copy; 2016.  Pokemon 后台管理系统</div>
+        <div class="pull-right">
+        </div>
+    </div>
+
+  </div>
+  <!-- signin -->
+
+</section>
+
+</body>
+<script src="__STATIC__/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    var captcha_img = $('#verify_img');
+    var verifyimg = captcha_img.attr("src");  
+    captcha_img.attr('title', '点击刷新');  
+    captcha_img.click(function(){
+        if( verifyimg.indexOf('?')>0){  
+            $(this).attr("src", '{:captcha_src()}'+'&random='+Math.random());  
+        }else{  
+            $(this).attr("src", '{:captcha_src()}'+'?'+Math.random());  
+        }  
+    }); 
+  });
+</script>
+</html>

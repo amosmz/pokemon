@@ -1,0 +1,87 @@
+<?php 
+  $topAttr = array('title'=>'公告','icon'=>'fa-briefcase');
+  $topAttr['here'] = array(
+      '首页' => "{:url('Index/index')}",
+      );
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+  <meta content=always name=referrer>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <title>{:$topAttr['title']}</title>
+  <link href="__STATIC__/css/style.default.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="__STATIC__/js/html5shiv.js"></script>
+  <script src="__STATIC__/js/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css"></style>
+</head>
+
+<body>
+
+
+
+  <div id="preloader">
+    <div id="status"> <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+
+ {include file="public/leftpanel" /}
+
+  <div class="mainpanel">
+
+     {include file="public/headerbar" /}
+
+    <div class="contentpanel">
+
+      <div class="people-list">
+        <div class="row">
+
+          <style type="text/css">
+            .data_tab {font-size:15px;margin-bottom: 20px;}
+            .data_tab td {padding:2px 5px;}
+
+            .visit_tab {margin-bottom: 40px;width: 100%;}
+            .visit_tab td {padding:3px 2px;}
+            .visit_div {height:30px;color:#fff;line-height: 30px;}
+
+            .state_tab {width: 100%;}
+            .state_div {width:30px;height:30px;display:inline-block;margin-left:50px;}
+
+          </style>
+          <div class="panel panel-default" style="padding:30px;width:50%;margin:auto;">
+            <form action="{:url('Index/index')}" method="post">
+              <div class="form-group">
+                <textarea rows="20" class="form-control" name="content">{$data['content']}</textarea>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                    <button class="btn btn-primary btn-block">保存</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  {include file="public/rightpanel" /}
+  <script src="__STATIC__/js/jquery-1.11.1.min.js"></script>
+  <script src="__STATIC__/js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="__STATIC__/js/bootstrap.min.js"></script>
+  <script src="__STATIC__/js/toggles.min.js"></script>
+  <script src="__STATIC__/js/jquery.cookies.js"></script>
+  <script src="__STATIC__/js/custom.js"></script>
+  <script src="__STATIC__/js/select2.min.js"></script>
+  <script src="__STATIC__/js/main.js"></script>
+  
+</body>
+</html>

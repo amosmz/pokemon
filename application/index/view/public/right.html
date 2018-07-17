@@ -1,0 +1,53 @@
+<aside class="col-md-4 sidebar">
+<!-- start widget -->
+<!-- end widget -->
+<div class="widget">
+	<div class="content community">
+		<form id="form1" name="form" method="get" action="{:url('serach')}" enctype="multipart/form-data" >
+			<p>
+			   <input name="keyword" type="text" class="form-control" id="exampleInputEmail1" placeholder="关键字" value="{$Request.get.keyword}">
+			</p>
+			<p style="text-align: right;">
+				<a href="#" class="btn btn-default" onclick="$('#form1').submit()">搜索</a>
+			</p>
+		</form>
+	</div>
+</div>
+<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">公告</h4>
+	<div class="content community">
+		<p>
+			{:model('Note')->get(1)->value('content')}
+		</p>
+	</div>
+</div>
+<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">社区</h4>
+	<div class="content community">
+		<p>
+			Pokeone群：43023180
+		</p>
+		<p>
+			Pokeone & 世代群：9451276
+		</p>
+	</div>
+</div>
+<!-- end tag cloud widget -->
+<!-- start widget -->
+<div class="widget">
+	<h4 class="title">下载 PokeOne(PKO)</h4>
+	<div class="content download">
+		<a href="/download" class="btn btn-default btn-block" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '下载PokeOne'])">PokeOne(绝对不会汉化)</a>
+	</div>
+</div>
+<!-- end widget -->
+<!-- start tag cloud widget -->
+
+<!-- end tag cloud widget -->
+<!-- start widget -->
+<!-- end widget -->
+<!-- start widget -->
+<!-- end widget -->
+</aside>

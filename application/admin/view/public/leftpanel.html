@@ -1,0 +1,123 @@
+
+  <div class="leftpanel">
+
+    <div class="logopanel" >
+      <h1 style="letter-spacing:2px;font-size:25px;text-align:center;">
+        <span>[</span>
+        Pokemon
+        <span>]</span>
+      </h1>
+    </div>
+    <!-- logopanel -->  
+
+    <div class="leftpanelinner">
+
+      <!-- <h5 class="sidebartitle">目录</h5>
+    -->
+    <h5 class="sidebartitle"></h5>
+    <ul class="nav nav-pills nav-stacked nav-bracket" id="leftNav">
+
+      <li><a href="{:url('Index/index');}"> <i class="fa fa-home"></i><span>首页</span></a></li>
+
+      <?php if($loginUser['role'] == 1): ?>
+        <li class="nav-parent"><a href=""><i class="fa fa-briefcase"></i> <span>平台用户</span></a>
+          <ul class="children">
+            <li><a href="{:url('Admin/index')}"><i class="fa fa-arrows-alt"></i> 用户管理</a></li>
+            <li><a href="{:url('Admin/add')}"><i class="fa fa-plus"></i> 新增用户</a></li>
+          </ul>
+        </li>
+     <?php endif;?>
+
+      <li><a href="{:url('Pokemon/index');}"> <i class="fa fa-home"></i><span>精灵</span></a></li>
+      <li><a href="{:url('Moves/index');}"> <i class="fa fa-home"></i><span>招式</span></a></li>
+
+      <li class="nav-parent"><a href=""><i class="fa fa-briefcase"></i> <span>自动回复</span></a>
+        <ul class="children">
+          <li><a href="{:url('Texlib/index')}"><i class="fa fa-arrows-alt"></i> 自动回复</a></li>
+          <li><a href="{:url('Texlib/add')}"><i class="fa fa-plus"></i> 新增回复</a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-parent"><a href=""><i class="fa fa-briefcase"></i> <span>文章列表</span></a>
+        <ul class="children">
+          <li><a href="{:url('Article/index')}"><i class="fa fa-arrows-alt"></i> 文章列表</a></li>
+          <li><a href="{:url('Article/add')}"><i class="fa fa-plus"></i> 新增文章</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="visible-xs hidden-sm hidden-md hidden-lg">
+      <div class="media userlogged"  style="display:none">
+        <img src="__STATIC__/images/photos/loggeduser.png" alt=""  class="media-object" />  
+        <div class="media-body">
+          <h4></h4>
+        </div>
+      </div>
+
+      <h5 class="sidebartitle actitle">设置</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+        <!-- <li style="display:none">  
+        <a href="profile.html"> <i class="fa fa-user"></i>
+          <span>我的资料</span>
+        </a>
+      </li>
+      -->
+      <li>
+        <a href="{:url('User/set')}">
+          <i class="fa fa-cog"></i>
+          <span>个人设置</span>
+        </a>
+      </li>
+      <li style="display:none">
+        <a href="">
+          <i class="fa fa-question-circle"></i>
+          <span>帮助中心</span>
+        </a>
+      </li>
+      <li>
+        <a href="{:url('User/logout')}">
+          <i class="fa fa-sign-out"></i>
+          <span>退出系统</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+  <!-- leftpanelinner --> </div>
+  <!-- leftpanel -->  
+
+  <script src="__STATIC__/js/jquery-1.11.1.min.js"></script>
+  <script>
+    // $("#preloader").css("display",'none');
+    $(function() {
+      // var urlStr = window.location.pathname;
+      var controller_name = "Admin/{:request()->controller()}/"; //控制器名
+      var action_name = "{:request()->action()}"; //方法名
+      var urlStr = controller_name + action_name;
+      var aObj = $("#leftNav a[href*='" + urlStr + "']")[0];
+      if (aObj == null) {
+        var aObj = $("a[href*='" + controller_name + "']")[0];
+      } else {
+        aObj.parentNode.className = "active";
+      }
+      if (aObj != null) {
+        var ulObj = aObj.parentNode.parentNode;
+        if (ulObj.tagName == "UL" && ulObj.className == "children") {
+          ulObj.style.display = "block";
+          var liObj = ulObj.parentNode;
+          if (liObj.tagName == "LI" && liObj.className == "nav-parent") {
+            liObj.className = "nav-parent nav-active active";
+          }
+        }else{
+          var liObj = aObj.parentNode;
+          if (liObj.tagName == "LI") {
+            liObj.className = "active";
+          }
+        }
+      }
+    });
+    
+    // if (r != null) return unescape(r[2]); return null;
+  </script>

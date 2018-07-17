@@ -1,0 +1,24 @@
+<div class="headerbar">
+  <a class="menutoggle"> <i class="fa fa-bars"></i></a>
+  {include file="public/header_right" /}
+</div>
+<!-- headerbar -->
+
+
+<div class="pageheader">
+  <h2 style="font-family: 黑体;font-size: 25px;"> <i class="fa {:$topAttr['icon']}"></i>
+    {:$topAttr['title']}
+  </h2>
+  <div class="breadcrumb-wrapper">
+    <span class="label">您的位置:</span>
+    <ol class="breadcrumb" >
+      <?php foreach ($topAttr['here'] as $key => $v){
+          if(empty($v)){
+              echo '<li class="active">'.$key.'</li>';
+          }else{
+              echo '<li><a href="'.$v.'">'.$key.'</a></li>';
+          }
+      } ?>
+    </ol>
+  </div>
+</div>

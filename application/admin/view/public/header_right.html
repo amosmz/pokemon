@@ -1,0 +1,41 @@
+
+<div class="header-right">
+  <ul class="headermenu"> 
+    <?php if (!empty($loginUser)): ?>
+
+    <!-- <li style="line-height: 50px;padding:0 10px;">
+      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=489285050&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:489285050:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+    </li> -->
+    <li>
+      <div class="btn-group">
+
+
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <img style="height: 26px;" src="__UPLOADS__<?php echo '/'.$loginUser['image']; ?>" onerror="this.src='__STATIC__/images/photos/loggeduser.png'" />
+          {:$loginUser['account']}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+          <li><a href="{:url('Login/logout')}"><i class="glyphicon glyphicon-log-out"></i> 注销 </a></li>
+        </ul>
+      </div>
+    </li>
+    <!-- <li >
+      <button id="chatview" class="btn btn-default tp-icon chat-icon">
+          <i class="glyphicon glyphicon-comment"></i>
+      </button>
+    </li> -->
+
+    <?php else: ?>
+    <li>
+      <div class="btn-group">
+        <button class="btn btn-default dropdown-toggle tp-icon" >
+          <a href="{:url('Login/index')}"><span class="fa fa-sign-in"></span>
+            登录</a>
+        </button>
+      </div>
+    </li>
+    <?php endif ?>
+    
+  </ul>
+</div><!-- header-right -->
