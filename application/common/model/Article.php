@@ -27,4 +27,9 @@ class Article extends Model
     {
         $query->where('content', 'like', '%' . $content . '%');
     }
+
+    public function scopeTag($query, $tag)
+    {
+        $query->where('tag', 'like', '%' . $tag . '%');
+    }
 }
