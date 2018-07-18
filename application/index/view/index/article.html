@@ -34,13 +34,36 @@
 				</p>
 			</div>
 		    <section class="post-content">
+		    	<?php if($data['up'] != 0):?>
 		        <p>
-		            原文出处：
-		            <a href="/article/{$data['id']}">
-		                /article/{$data['id']}
+		            上一篇：
+		            <a href="/article/{$data['up']}">
+		                {:model('Article')->where('id',$data['up'])->value('title')}
 		            </a>
 		        </p>
+		       <?php endif;?>
+		       <?php if($data['down'] != 0):?>
+		         <p>
+		            下一篇：
+		            <a href="/article/{$data['down']}">
+		                {:model('Article')->where('id',$data['down'])->value('title')}
+		            </a>
+		        </p>
+		        <?php endif;?>
 		    </section>
+		    <footer class="post-footer clearfix">
+				<div class="pull-left tag-list">
+					<i class="fa fa-tags">
+						<?php $tag_lists = explode(',',$data['tag']);?>
+						<?php foreach($tag_lists as $k => $v):?>
+							<?php if($k != 0):?>  ,  <?php endif;?>
+							  {:model('Tag')->where('id',$v)->value('name')}
+						<?php endforeach;?>
+					</i>
+				</div>
+				<div class="pull-right share">
+				</div>
+			</footer>
 		</article>
 		</main>
 		{include file="public/right" /}

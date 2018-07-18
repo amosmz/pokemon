@@ -35,6 +35,18 @@
 	</div>
 </div>
 <!-- end tag cloud widget -->
+<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">标签云</h4>
+	<div class="content tag-cloud">
+		<?php $tag_list = model('Tag')->select();?>
+		<?php foreach($tag_list as $tagk => $tagv):?>
+			<a href="/tag/{$tagv['id']}">{$tagv['name']}</a>
+		<?php endforeach;?>
+		
+	</div>
+</div>
+<!-- end tag cloud widget -->
 <!-- start widget -->
 <div class="widget">
 	<h4 class="title">下载 PokeOne(PKO)</h4>
@@ -42,10 +54,9 @@
 		<a href="/download" class="btn btn-default btn-block" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '下载PokeOne'])">PokeOne(绝对不会汉化)</a>
 	</div>
 </div>
-<!-- end widget -->
-<!-- start tag cloud widget -->
 
-<!-- end tag cloud widget -->
+<!-- end widget -->
+
 <!-- start widget -->
 <!-- end widget -->
 <!-- start widget -->

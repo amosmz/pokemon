@@ -9,6 +9,8 @@ class Index extends Base
         return parent::__construct(); 
     }
 
+
+
     public function article(){
     	$id = request()->param('id');
     	$data = $this->model->where('id',$id)->find();
@@ -29,6 +31,16 @@ class Index extends Base
         $model = $this->model;
         $keyword = request()->param('keyword');
         $lists = $model->content($keyword)->order('id desc')->paginate('10');
+        // 把分页数据赋值给模板变量list
+        $this->assign('lists', $lists);
+        return $this->fetch('index');
+    }
+
+    //标签云
+    public function tag(){
+        $model = $this->model;
+        $id = request()->param('id');
+        $lists = $model->tag($id)->order('id desc')->paginate('10');
         // 把分页数据赋值给模板变量list
         $this->assign('lists', $lists);
         return $this->fetch('index');
