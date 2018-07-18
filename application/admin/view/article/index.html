@@ -49,18 +49,41 @@
             <?php if (count($lists) > 0): ?>
               <table border="0" class="table_d" cellspacing="0" cellpadding="0">
                 <tr>
-                  <th>编号</th>  
+                  <th>编号</th>
+                  <th>标签</th>  
                   <th>作者</th>
                   <th>类型</th>
                   <th>标题</th>
+                  <th>上一篇</th>
+                  <th>下一篇</th>
                   <th>操作</th>                  
                 </tr>
                 <?php foreach ($lists as $k => $vo): ?>
                   <tr>
                      <td>{:$vo['id']}</td>
+                     <td>
+                        <?php foreach($vo['tag'] as $k => $v):?>
+                          <?php if($k != 0):?>  ,  <?php endif;?>
+                            {:model('Tag')->where('id',$v)->value('name')}
+                        <?php endforeach;?>
+                     </td>
                      <td>{:model('Admin')->where('id',$vo['uid'])->value('name')}</td>
                      <td>{:model('ArticleType')->where('id',$vo['type'])->value('name')}</td>
                      <td>{:$vo['title']}</td>
+                     <td>
+                         <?php if($vo['up'] != 0):?>
+                             {:model('Article')->where('id',$vo['up'])->value('title')}
+                         <?php else:?>
+                             无
+                         <?php endif;?>
+                    </td>
+                     <td>
+                         <?php if($vo['down'] != 0):?>
+                           {:model('Article')->where('id',$vo['down'])->value('title')}
+                         <?php else:?>
+                             无
+                          <?php endif;?>
+                     </td>
                      <td>
                           <a href="{:url('edit',array('id'=>$vo['id']))}" class="tooltips" title="编辑"> <i class="fa fa-edit"></i></a>
                           <a onclick="return confirm('确定删除？');" href="{:url('delete',array('id'=>$vo['id']))}" class="tooltips" title="删除"> <i class="fa fa-trash-o"></i></a>

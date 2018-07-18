@@ -67,6 +67,45 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+								<label class="col-sm-3 control-label">上一篇</label>
+								<div class="col-sm-6">
+								  <?php $article_list = model('Article')->select(); ?>
+				                  <select class="select2" name="up">
+				                  	<option value="0">无</option>
+				                    <?php foreach ($article_list as $k => $v): ?>
+				                      <option value="{:$v['id']}" >{:$v['id']}{:$v['title']}</option>
+				                    <?php endforeach ?>
+				                  </select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">下一篇</label>
+								<div class="col-sm-6">
+								  <?php $article_list = model('Article')->select(); ?>
+				                  <select class="select2" name="down">
+				                  	<option value="0">无</option>
+				                    <?php foreach ($article_list as $k => $v): ?>
+				                      <option value="{:$v['id']}" >{:$v['id']}{:$v['title']}</option>
+				                    <?php endforeach ?>
+				                  </select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">标签</label>
+								<div class="col-md-6">
+									<?php $tag_list = model('Tag')->select();?>
+									<?php foreach($tag_list as $tagk => $tagv):?>
+									  <div class="ckbox ckbox-default" style="float:left;">
+									    <input type="checkbox" value="{$tagv['id']}" name="tag[]" id ="{$tagv['name']}">
+									    <label for="{$tagv['name']}">{$tagv['name']}</label>
+									  </div>
+									<?php endforeach;?>
+				                </div>
+			                </div>
+
 							<textarea name = "abstract" style="display:none;"></textarea>
 
 							<div class="form-group">

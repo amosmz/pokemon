@@ -54,8 +54,7 @@
 		    <footer class="post-footer clearfix">
 				<div class="pull-left tag-list">
 					<i class="fa fa-tags">
-						<?php $tag_lists = explode(',',$data['tag']);?>
-						<?php foreach($tag_lists as $k => $v):?>
+						<?php foreach($data['tag'] as $k => $v):?>
 							<?php if($k != 0):?>  ,  <?php endif;?>
 							  {:model('Tag')->where('id',$v)->value('name')}
 						<?php endforeach;?>

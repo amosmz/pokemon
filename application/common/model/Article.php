@@ -32,4 +32,12 @@ class Article extends Model
     {
         $query->where('tag', 'like', '%' . $tag . '%');
     }
+
+    public function setTagAttr($value){
+        return implode(',', $value);
+    }
+
+    public function getTagAttr($value){
+        return explode(',', $value);
+    }
 }
