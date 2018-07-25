@@ -143,6 +143,10 @@ class Ueditor  extends Controller
                     'type'=>'.' . $info->getExtension(),
                     'size'=>$info->getSize(),
                 );
+                //添加水印
+                $image = \think\Image::open('public/uploads/'.$info->getSaveName());
+                // 给原图左上角添加水印并保存water_image.png
+                $image->text('5poke.com','HoboStd.otf',20,'#000000')->save('public/uploads/'.$info->getSaveName());
             }else{
                 // 上传失败获取错误信息
                 $data = array(
