@@ -40,7 +40,7 @@
 		<div class="mainpanel">
 			{include file="public/headerbar" /}
 			<div class="contentpanel">
-				<form id="form1" name="form1" class="form-horizontal form-bordered" action="" enctype="multipart/form-data" method="post">
+				<form id="form1" name="form1" class="form-horizontal form-bordered" action="{:url('edit')}" enctype="multipart/form-data" method="post">
 
 					<div class="panel panel-default">
 						
@@ -61,7 +61,7 @@
 						<div class="panel-footer">
 							<div class="row">
 								<div class="col-sm-6 col-sm-offset-3">
-									<a class="btn btn-primary" onclick="affirm();">提交</a>
+									<button class="btn btn-primary">提交</button>
 									&nbsp;
 									<input type="reset" value="重置" class="btn btn-default"></div>
 							</div>

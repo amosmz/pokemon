@@ -63,6 +63,43 @@
 				<div class="pull-right share">
 				</div>
 			</footer>
+			<footer class="post-footer clearfix">
+			<h4>留言板</h4>
+			</footer>
+			<?php foreach ($lists as $k => $vo): ?>
+			<footer class="post-footer clearfix">
+				<div  class="pull-left tag-list" style="width: 100%;">
+					 <div style="width: 15%;float: left;">
+					    {$vo['id']}楼
+					    <p>
+					    	&nbsp;
+					    </p>
+					    <p>
+					    	{$vo['host']}
+					    </p>
+					 </div>
+					 <div style="width: 85%;float: left;">
+					   {:$vo['content']}
+					    <p>
+					    	&nbsp;
+					    </p>
+					   <p style="text-align: right;">{$vo['ctime']}</p>
+					 </div>
+				</div>
+			</footer>
+			<?php endforeach;?>
+		    {$lists|raw}
+			 <footer class="post-footer clearfix">
+			 	<form name="form1" id="form1" method="post" action="{:url('comment')}" enctype="multipart/form-data" >
+			 		<input type="hidden" id="aritcle_id" name="aritcle_id" value="{$data['id']}">
+					<div>
+				    	<script id="container" name="content" type="text/plain"> </script>
+					</div>
+					<p style="margin-top: 15px;">
+						<a href="#" class="btn btn-default" onclick="push_comment()">发表</a>
+					</p>
+				</form>
+			</footer>
 		</article>
 		</main>
 		{include file="public/right" /}
@@ -70,5 +107,43 @@
 </div>
 </section>
 {include file="public/foot" /}
+<!-- 配置文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+		var ue = UE.getEditor('container', {
+			serverUrl:'{:url("upload")}',
+			initialFrameHeight :"220",
+			initialFrameWidth :"100%"
+			, toolbars: [[
+              'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'emotion'
+	        ]],
+	        elementPathEnabled:false,
+	        wordCount:false,
+	        enableContextMenu:false,
+	        pasteplain:true
+		});
+
+		function push_comment(){
+			var aritcle_id = $('#aritcle_id').val();
+			var content = ue.getContent();
+			$.ajax({
+	            url: '{:url("comment")}',
+	            dataType: "json",
+	            type: 'POST',
+	            data:'aritcle_id='+aritcle_id+'&content='+content,
+	            success:function(date){
+	            	if(date.status == 1){
+	            		alert('添加失败');
+	            	}
+	            	else{
+	            		location.reload();
+	            	}
+	            }    
+	        });
+		}
+</script>
 </body>
 </html>

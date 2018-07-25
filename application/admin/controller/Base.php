@@ -64,10 +64,11 @@ class Base  extends Controller
                     }
                 }
                 $result = $model->save($data);
+                $url = 'admin/'.$this->modelname.'/index';
                 if(false === $result){
-                    $this->error('添加失败');
+                    $this->error('添加失败',url($url));
                 }else{
-                    $this->success('添加成功');
+                    $this->success('添加成功',url($url));
                 }
             }
         }   
@@ -97,10 +98,11 @@ class Base  extends Controller
                     }
                 }
                 $result = $model->allowField(true)->save($data,['id' => $id]);
+                $url = 'admin/'.$this->modelname.'/index';
                 if(false === $result){
-                    $this->success('修改失败');
+                    $this->success('修改失败',url($url));
                 }else{
-                    $this->success('修改成功');
+                    $this->success('修改成功',url($url));
                 }
             }
         }
