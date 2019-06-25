@@ -163,6 +163,7 @@ for row in range(1,ws.max_row+1):
                               filecategorystr = result_data1['data']['msg']+','+result_data2['data']['msg']+','+result_data3['data']['msg']
                               status_json = get_status(iccid,idcode,custname,filecategorystr)
                               result_json = json.loads(status_json)
+                              print(iccid+":"+result_json['data']['msg'])
                               if  result_json['status'] ==  "0" and  result_json['code'] ==  "0":
                                  write_success_log(status_json)
                                  all_excel_log(iccid,custname,idcode,status_json)
